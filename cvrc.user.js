@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Envio em Massa - Centro Veterinário Dr. Roger Coura
-// @namespace    adapta
+// @name         Centro Veterinário Dr. Roger Coura
+// @namespace    CVRC
 // @version      1.0.0
 // @description  Envia as 3 mensagens padrão (e o PDF) para vários números pelo WhatsApp Web
 // @match        https://web.whatsapp.com/*
