@@ -1,0 +1,15 @@
+{
+  "name": "envio-whatsapp-web",
+  "version": "1.0.0",
+  "description": "Envio em massa via WhatsApp Web controlado pelo navegador",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "qrcode": "^1.5.3",
+    "socket.io": "^4.7.5",
+    "whatsapp-web.js": "^1.34.7"
+  }
+}
