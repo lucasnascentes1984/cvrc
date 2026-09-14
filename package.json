@@ -1,10 +1,11 @@
 {
   "name": "envio-whatsapp-web",
   "version": "1.0.0",
-  "description": "Centro Veterinário Roger Coura",
+  "description": "Envio em massa via WhatsApp Web controlado pelo navegador",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "npx puppeteer browsers install chrome"
   },
   "dependencies": {
     "express": "^4.19.2",
