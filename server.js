@@ -92,7 +92,26 @@ async function criarClient() {
     authStrategy: new LocalAuth({ dataPath: "./sessao" }),
     puppeteer: {
       headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+      dumpio: false,
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--no-zygote",
+        "--single-process",
+        "--disable-extensions",
+        "--disable-software-rasterizer",
+        "--disable-background-networking",
+        "--disable-default-apps",
+        "--disable-sync",
+        "--disable-translate",
+        "--hide-scrollbars",
+        "--metrics-recording-only",
+        "--mute-audio",
+        "--no-first-run",
+        "--safebrowsing-disable-auto-update"
+      ],
     },
   });
 
@@ -100,23 +119,31 @@ async function criarClient() {
     qrAtual = qr;
     const dataUrl = await QRCode.toDataURL(qr);
     io.emit("qr", dataUrl);
+    console.log("QR Code gerado. Escaneie com o celular.");
   });
 
   client.on("ready", () => {
     conectado = true;
     qrAtual = null;
     io.emit("status", "conectado");
+    console.log("WhatsApp conectado!");
   });
 
   client.on("disconnected", (motivo) => {
     conectado = false;
     io.emit("status", "desconectado: " + motivo);
+    console.log("Desconectado:", motivo);
+  });
+
+  client.on("auth_failure", (msg) => {
+    console.error("Falha de autenticacao:", msg);
   });
 
   try {
     await client.initialize();
   } catch (e) {
     console.error("Falha ao iniciar o WhatsApp:", e.message);
+    io.emit("status", "erro: " + e.message);
   }
 }
 
