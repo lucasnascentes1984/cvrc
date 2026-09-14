@@ -1,4 +1,4 @@
-# Envio em Massa WhatsApp Web
+# Centro Veterinário Roger Coura
 
 App que envia mensagens do WhatsApp para vários números de uma vez, controlado
 totalmente pelo navegador. O operador abre o link do app, escaneia o QR Code uma
